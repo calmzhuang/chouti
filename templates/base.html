@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>抽屉</title>
+    <link rel="stylesheet" href="/statics/base.css">
+    <link rel="stylesheet" href="/statics/login_register.css">
+    {% block css %}
+    {% endblock %}
+</head>
+<body>
+    <div class="head-band">
+        <div class="head-content">
+            <a href="/" class="digg-logo"></a>
+            <input type="hidden" id="newIntoHotCount" value="1">
+            <input value="1" type="hidden" class="isBan">
+            <!-- 导航 -->
+                <div class="action-menu">
+                    <a href="/all/hot/recent/1" class="tb active">全部</a>
+                    <a href="/r/news/hot/1" class="tb">42区</a>
+                    <a href="/r/scoff/hot/1" class="tb">段子</a>
+                    <a href="/r/pic/hot/1" class="tb">图片</a>
+                    <a href="/r/tec/hot/1" class="tb">挨踢1024</a>
+                    <a href="/r/ask/hot/1" class="tb">你问我答</a>
+                    <a href="/r/video/hot/1" class="tb">视频</a>
+                </div>
+            <div class="key-sera">
+                <form action="/search/show" method="post" name="searchFrm2" id="searchFrm2">
+                    <input type="text" class="search-txt-s" name="words" id="txtSearch2" autocomplete="off">
+                    <a href="javascript:;" class="i" name="searchBtn_2" id="searchBtn_3"><span class="ico"></span></a>
+                    <input type="hidden" value="1" id="page" name="page">
+                </form>
+            </div>
+            <div class="action-nav">
+                {% if request.session.username %}
+                    <a href="javascript:;" class="login-btn-a" id="personcenter-link-a">{{ request.session.username }}</a><a href="javascript:;" class="login-btn-a" id="logout-link-a">退出</a>
+                {% else %}
+                    <a href="javascript:;" class="login-btn-a" id="reg-link-a">注册</a><a href="javascript:;" class="login-btn-a" id="login-link-a">登录</a>
+                {% endif %}
+            </div>
+            <div class="chat-notice-area"></div>
+            <input type="hidden" id="hidjid" value="">
+        </div>
+        <div class="module-login-mask" style="">
+            <div class="module-login-container">
+                <div class="box-register" style="padding-left: 350px;">
+                    <div class="box-login">
+                        <div class="header box-active" style="border-radius:5px 0 0 0;">登录</div>
+                        <div class="body-login" style="border-radius:0 0 0 5px;">
+                            <div class="tab-box">
+                                <span class="tab-mobilelogin active" style="margin-right:10px;">手机号登录</span>|<span class="tab-idlogin" style="margin-left:10px;">用户名登录</span>
+                            </div>
+                            <div class="box-mobilelogin">
+                                <div class="err-msg"></div>
+                                <div>
+                                    <select class="region">
+                                        <option value="86">中国(+86)</option>
+                                        <option value="852">中国香港(+852)</option>
+                                        <option value="853">中国澳门(+853)</option>
+                                        <option value="886">中国台湾(+886)</option>
+                                        <option value="1">美国(+1)</option>
+                                        <option value="1">加拿大(+1)</option>
+                                        <option value="60">马来西亚(+60)</option>
+                                        <option value="61">澳洲(+61)</option>
+                                        <option value="81">日本(+81)</option>
+                                        <option value="82">韩国(+82)</option>
+                                        <option value="65">新加坡(+65)</option>
+                                        <option value="44">英国(+44)</option>
+                                        <option value="33">法国(+33)</option>
+                                        <option value="7">俄罗斯(+7)</option>
+                                        <option value="91">印度(+91)</option>
+                                        <option value="66">泰国(+66)</option>
+                                        <option value="49">德国(+49)</option>
+                                    </select>
+                                </div>
+                                <form class="form-mobilelogin" action="#" autocomplete="on">
+                                    <div class="pr"><input type="text" name="mobile" id="mobile" placeholder="手机号" class="mobile" tabindex="1"></div>
+                                    <div class="pr"><input type="password" name="mbpwd" id="mbpwd" placeholder="密码" class="mbpwd" tabindex="2"></div>
+                                </form>
+                            </div>
+                            <div class="box-idlogin" style="display:none;">
+                                <div class="err-msg"></div>
+                                <form class="form-idlogin" action="#" autocomplete="on">
+                                    <div class="pr"><input type="text" name="userid" id="userid" placeholder="用户名" class="userid" tabindex="1"></div>
+                                    <div class="pr"><input type="password" name="pwd" id="pwd" placeholder="密码" class="pwd" tabindex="2"></div>
+                                </form>
+                            </div>
+                            <div class="box-btn">
+                                <div style="position:relative;margin-bottom:20px;"><span><input type="checkbox" class="keeplogin" value="1" checked="">一个月内自动登录</span> <span class="fgtpwd"><a href="/profile/password/reset">忘记密码?</a></span></div>
+                                <div>
+                                    <div class="btn btn-login pub-icons pub-btn pub-btn-valid"><span>登录</span><span style="display:none;"><img src="/statics/images/loading.gif">正在登录</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="header" style="border-radius:0 5px 0 0;"><span>注册</span><div style="position:absolute;right:8px;top:8px;width:15px;height:15px;"><div class="btn-close icons
+                dialog-btn-close"></div></div></div>
+                    <div class="body-register" style="border-radius:0 0 5px 0;">
+                        <div class="step-box"><span class="step step-1 step-active">1 填写手机号</span><span> &gt; </span><span class="step         step-2">2 填写基本资料</span></div>
+                        <div class="box-register-mobile">
+                            <div class="err-msg"></div>
+                            <div>
+                                <select class="rgmobileregion">
+                                    <option value="86">中国(+86)</option>
+                                    <option value="852">中国香港(+852)</option>
+                                    <option value="853">中国澳门(+853)</option>
+                                    <option value="886">中国台湾(+886)</option>
+                                    <option value="1">美国(+1)</option>
+                                    <option value="1">加拿大(+1)</option>
+                                    <option value="60">马来西亚(+60)</option>
+                                    <option value="61">澳洲(+61)</option>
+                                    <option value="81">日本(+81)</option>
+                                    <option value="82">韩国(+82)</option>
+                                    <option value="65">新加坡(+65)</option>
+                                    <option value="44">英国(+44)</option>
+                                    <option value="33">法国(+33)</option>
+                                    <option value="7">俄罗斯(+7)</option>
+                                    <option value="91">印度(+91)</option>
+                                    <option value="66">泰国(+66)</option>
+                                    <option value="49">德国(+49)</option>
+                                </select>
+                            </div>
+                            <div class="pr"><input type="text" placeholder="手机号" style="width:120px;margin-right:6px;" class="rgmobile"><div class="btn btn-getcode">获取验证码</div><div style="text-align:right;margin-top:5px;" class="box-voicecode"><span>收不到短信？<a class="btn-getvoicecode" href="#">获取语音验证码</a></span></div></div>
+                            <div class="pr"><input type="text" placeholder="验证码" class="rgcode"></div>
+                            <div class="pr"><input type="password" placeholder="密码" class="rgpwd"></div>
+
+                            <div><div class="btn btn-register pub-icons pub-btn pub-btn-valid"><span>下一步</span><span style="display:none;"><img src="/statics/images/loading.gif">正在注册</span></div></div>
+                        </div>
+                        <div class="box-register-detail" style="display:none;">
+                            <div class="err-msg"></div>
+                            <div class="pr"><input type="text" placeholder="昵称（10个汉字以内）" maxlength="10" class="nick"></div>
+                            <div class="pr"><input type="radio" name="rgsex" class="sex" value="false" checked="">女 <input type="radio" name="rgsex" class="sex" value="true">男</div>
+                            <div>
+                                <select class="rgregion">
+                                    <option value="0">中国</option>
+                                    <option value="1">海外</option>
+                                </select>
+                            </div>
+                            <div class="box-rgcity">
+                                <select class="rgpro" style="width:49%;">
+                                    <option value="">请选择</option>
+                                <option value="北京">北京</option><option value="天津">天津</option><option value="河北">河北</option><option value="山西">山西</option><option value="内蒙古">内蒙古</option><option value="辽宁">辽宁</option><option value="吉林">吉林</option><option value="黑龙江">黑龙江</option><option value="上海">上海</option><option value="江苏">江苏</option><option value="浙江">浙江</option><option value="安徽">安徽</option><option value="福建">福建</option><option value="江西">江西</option><option value="山东">山东</option><option value="河南">河南</option><option value="湖北">湖北</option><option value="湖南">湖南</option><option value="广东">广东</option><option value="广西">广西</option><option value="海南">海南</option><option value="重庆">重庆</option><option value="四川">四川</option><option value="贵州">贵州</option><option value="云南">云南</option><option value="西藏">西藏</option><option value="陕西">陕西</option><option value="甘肃">甘肃</option><option value="青海">青海</option><option value="宁夏">宁夏</option><option value="新疆">新疆</option><option value="香港">香港</option><option value="澳门">澳门</option><option value="台湾">台湾</option></select>
+                                <select class="rgcity" style="width:49%;">
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                            <div class="pr"><textarea placeholder="签名档（100个汉字以内）" maxlength="100" class="sign"></textarea></div>
+                            <div><div class="btn btn-accomplish pub-icons pub-btn pub-btn-valid"><span>提交资料</span><span style="display:none;"><img src="/statics/images/loading.gif">正在提交</span></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+</body>
+</html>

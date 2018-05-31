@@ -1,0 +1,157 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+div {
+    display: block;
+}
+
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, a, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+    margin: 0;
+    padding: 0;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+.head-band {
+    height: 44px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #2459a2;
+    z-index: 1000;
+}
+
+.head-content {
+    width: 1016px;
+    margin: 0 auto;
+    line-height: 44px;
+    height: 44px;
+    background-color: #2459a2;
+    position: relative;
+}
+
+.digg-logo {
+    width: 121px;
+    height: 23px;
+    background: url(/statics/images/logo.png) no-repeat 0 0;
+    float: left;
+    margin-top: 11px;
+}
+
+.action-menu {
+    float: left;
+    line-height: 43px\9;
+    margin-left: 20px;
+    font-size: 12px;
+}
+
+.action-menu a.tb {
+color: #c0cddf;
+margin-left: -3px;
+padding: 0 13px 0 16px;
+display: inline-block;
+vertical-align: 1px\9;
+}
+
+.action-menu a.active {
+    color: #fff;
+    background-color: #204982;
+}
+
+a {
+    text-decoration: none;
+}
+
+.key-sera {
+    float: right;
+    margin-top: 6px;
+}
+
+.action-nav {
+    position: absolute;
+    right: 131px;
+    font-size: 12px;
+    line-height: 43px\9;
+}
+
+.action-nav a {
+    color: #fff;
+    margin: 0 5px;
+    display: inline-block;
+    vertical-align: 1px\9;
+    height: 44px;
+    padding: 0 20px;
+}
+
+.login-btn-a {
+    color: #369;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.search-txt-s {
+    background-color: #f4f4f4;
+    border: 1px solid #e0e0e0;
+    color: #333;
+    height: 25px;
+    line-height: 25px\9;
+    padding: 2px 2px 2px 5px;
+    width: 91px;
+    float: left;
+}
+
+input {
+    outline: 0;
+}
+
+.key-sera a.i {
+    width: 30px;
+    height: 29px;
+    display: inline-block;
+    border: 1px solid #e0e0e0;
+    border-left: 0;
+    background-color: #f4f4f4;
+    float: left;
+}
+
+form a {
+    color: #369;
+}
+
+.key-sera a.i span {
+    background-position: 0 -197px;
+    display: block;
+    height: 12px;
+    margin-left: 11px;
+    margin-top: 9px;
+    width: 11px;
+    _overflow: hidden;
+}
+
+.ico {
+    background: url(/statics/images/icon.png) no-repeat 0 0;
+}
+
+.action-nav a:hover {
+    color: #fff;
+    background-color: #396bb3;
+}
+
+.login-btn-a:hover {
+    color: #fff;
+    background-color: #396bb3;
+}
+
+.action-menu a.tb:hover {
+    color: #fff;
+    background-color: #396bb3;
+}
+
+.action-menu a.active:hover {
+    color: #fff;
+    background-color: #204982;
+}
+
