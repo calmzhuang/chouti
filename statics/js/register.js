@@ -11,11 +11,8 @@ $(function () {
                     telephonenum: telephonenum,
                 },
                 success: function (data) {
-                    alert(1);
                     let timer = 60;
-                    do {
-                        setInterval(() => {$(".rgmobile").val(`已发送（${timer}）`); timer-=1;$('.btn-getcode').removeEventListener('click');}, 1000)
-                    }while (timer > 0)
+                    let interval = setInterval(() => {$(".btn-getcode").html(`已发送(${timer})`).addClass('btn-disable').css('cursor', 'default'); timer-=1;$('.btn-getcode').unbind('click');console.log(timer);if(timer < 0){clearInterval(interval);$(".btn-getcode").html('发送验证码').removeClass('btn-disable').css('cursor', 'pointer');$('.btn-getcode').bind('click');}}, 1000)
                 }
             })
         }

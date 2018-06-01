@@ -298,3 +298,8 @@ textarea {
     background-color: #087bb5;
 }
 
+.btn-disable,.btn-disable:hover {
+    cursor: not-allowed;
+    background: #a3a3a1 !important;
+}
+
