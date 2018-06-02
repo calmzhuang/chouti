@@ -20,5 +20,5 @@ class UserInfo(models.Model):
 class TelCode(models.Model):
     telephone = models.CharField(max_length=32, unique=True)
     code = models.CharField(max_length=64)
-    times = models.IntegerField(max_length=1)
+    times = models.IntegerField()
     cTime = models.DateTimeField(auto_now_add=True)
