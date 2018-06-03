@@ -22,4 +22,7 @@ urlpatterns = [
     path('test/', views.test),
     path('getcode/', views.getcode),
     path('next_page/', views.next_page),
+    path('accomplish/', views.accomplish),
+    path('logout/', views.logout, name='logout'),
+    path('login/', views.login),
 ]

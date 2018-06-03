@@ -4,8 +4,16 @@ $(function () {
     });
     $('.btn-register').on('click', function () {
         next_register();
+    });
+    $('.btn-accomplish').on('click', function () {
+        accomplish();
+    })
+    $('.btn-close').on('click', function () {
+        $('.module-login-mask').hide();
     })
 });
+
+var user_info;
 
 var next_register = function () {
     let rgmobile = $(".rgmobile").val().trim();
@@ -36,8 +44,50 @@ var next_register = function () {
                 if (data) {
                     $('.box-register-mobile').hide();
                     $('.box-register-detail').show();
+                    user_info = {'rgmobile': rgmobile, 'rgpwd': rgpwd};
+                    $('.step-1').removeClass('step-active');
+                    $('.step-2').addClass('step-active');
+                }
+                else {
+                    $('.box-register-mobile>.err-msg').html('请确认手机号及验证码');
                 }
             }
+        })
+    }
+};
+
+var accomplish = function () {
+    let nick = $(".nick").val().trim();
+    let sex = $("input[name='rgsex']:checked").val() == false? 1 : 0;
+    let sign = $(".sign").val().trim();
+    if (nick == '') {
+        $('.box-register-detail>.err-msg').html('昵称不可为空');
+    }
+    else if (nick.length > 10) {
+        $('.box-register-detail>.err-msg').html('昵称过长');
+    }
+    else if (sign == '') {
+        $('.box-register-detail>.err-msg').html('签名档不能为空');
+    }
+    else if (sign.length > 100){
+        $('.box-register-detail>.err-msg').html('签名档过长');
+    }
+    else {
+        $.ajax({
+            url: '/accomplish/',
+            type: 'post',
+            dataType: 'JSON',
+            data: {
+                'nick': nick,
+                'sex': sex,
+                'user_info': user_info,
+                'sign': sign,
+            },
+            success: function (data) {
+                if (data == ''){
+                    location.reload();
+                }
+            },
         })
     }
 };

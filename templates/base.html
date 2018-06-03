@@ -33,7 +33,7 @@
             </div>
             <div class="action-nav">
                 {% if request.session.username %}
-                    <a href="javascript:;" class="login-btn-a" id="personcenter-link-a">{{ request.session.username }}</a><a href="javascript:;" class="login-btn-a" id="logout-link-a">退出</a>
+                    <a href="javascript:;" class="person-btn-a" id="personcenter-link-a">{{ request.session.username }}</a><a href="{% url 'logout' %}" class="logout-btn-a" id="logout-link-a">退出</a>
                 {% else %}
                     <a href="javascript:;" class="login-btn-a" id="reg-link-a">注册</a><a href="javascript:;" class="login-btn-a" id="login-link-a">登录</a>
                 {% endif %}
@@ -41,7 +41,7 @@
             <div class="chat-notice-area"></div>
             <input type="hidden" id="hidjid" value="">
         </div>
-        <div class="module-login-mask" style="">
+        <div class="module-login-mask" style="display: none">
             <div class="module-login-container">
                 <div class="box-register" style="padding-left: 350px;">
                     <div class="box-login">
@@ -157,6 +157,7 @@
     <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
     <script src="/statics/js/jquery-3.1.1.js"></script>
     <script src="/statics/js/register.js"></script>
+    <script src="/statics/js/login_logout.js"></script>
     {% block js %}
     {% endblock %}
 </body>
