@@ -26,12 +26,12 @@ class TelCode(models.Model):
     cTime = models.DateTimeField(auto_now_add=True)
 
 class AllHot(models.Model):
-    title = models.CharField('热点标题', max_length=32, unique=True)
-    url = models.CharField('热点路径', max_length=32, unique=True)
-    source = models.CharField('热点来源', max_length=32, unique=True)
-    content = models.CharField('热点简介', max_length=32, unique=True)
-    img_url = models.CharField('热点图片地址', max_length=32, unique=True)
+    title = models.CharField('热点标题', max_length=32)
+    url = models.CharField('热点路径', max_length=32)
+    source = models.CharField('热点来源', max_length=32)
+    content = models.CharField('热点简介', max_length=32)
+    img_url = models.CharField('热点图片地址', max_length=32)
     praise = models.IntegerField('热点获赞数量', default=0)
     comments = models.IntegerField('热点评论数量', default=0)
-    label = models.CharField('热点标签', max_length=32, unique=True)
+    label = models.CharField('热点标签', max_length=32)
     storage_time = models.DateTimeField('热点入库时间', auto_now_add=True)
