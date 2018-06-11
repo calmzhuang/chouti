@@ -1,11 +1,22 @@
 from django.db.models import F, Q
 from django.shortcuts import render, HttpResponse, redirect
+from django.utils.decorators import method_decorator
+from django import views
 from app01.models import TelCode, UserInfo
 from app01.toolClass.getcode import generate_verification_code
 from django.utils.timezone import now, timedelta
 from io import BytesIO
 from app01.toolClass.getpilcode import create_validate_code
 # import datetime, time
+
+def outer(func):
+    def inner(request, *args, **kwargs):
+        sess = request.session.get('username', None)
+        if sess:
+            return func(request, *args, **kwargs)
+        else:
+            return redirect('/login')
+    return inner
 
 # Create your views here.
 def test(request):
@@ -100,3 +111,12 @@ def check_code(request):#生成图片验证码
     img.save(stream, 'PNG')
     request.session['CheckCode'] = code
     return HttpResponse(stream.getvalue())
+
+@method_decorator(outer, name='dispatch')
+class AllHot(views.View):
+    def dispatch(self, request, *args, **kwargs):
+        ret = super(AllHot, self).dispatch(request, *args, **kwargs)
+        return ret
+
+    def get(self, request, *args, **kwargs):
+        return render(request, 'index.html')

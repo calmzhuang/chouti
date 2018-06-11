@@ -1,0 +1,9 @@
+.main-content {
+    width: 960px;
+    margin: 0 auto;
+    overflow: hidden;
+    height: auto!important;
+    min-height: 713px;
+    padding: 6px 28px 60px;
+    background-color: #fff;
+}

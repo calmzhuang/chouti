@@ -26,4 +26,5 @@ urlpatterns = [
     path('logout/', views.logout, name='logout'),
     path('login/', views.login),
     path('check_code/', views.check_code, name='check_code'),
+    path('teacher/', views.AllHot.as_view()),
 ]

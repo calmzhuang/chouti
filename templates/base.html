@@ -74,7 +74,7 @@
                                     </select>
                                 </div>
                                 <form class="form-mobilelogin" action="#" autocomplete="on">
-                                    <div class="pr"><input type="text" name="mobile" id="mobile" placeholder="手机号" class="mobile" tabindex="1"></div>
+                                    <div class="pr"><input type="text" name="mobile" id="mobile" placeholder="手机号或用户名" class="mobile" tabindex="1"></div>
                                     <div class="pr"><input type="password" name="mbpwd" id="mbpwd" placeholder="密码" class="mbpwd" tabindex="2"></div>
                                     <div class="pr"><input type="text" name="pcd" id="pcd" placeholder="验证码" class="getpilcode" style="width: 90px" tabindex="3"><img id="picode"
                                             src="/check_code" alt="图片验证码" class="imgcode"></div>
@@ -147,6 +147,8 @@
             </div>
         </div>
 	</div>
+    {% block main %}
+    {% endblock %}
     <script src="https://cdn.bootcss.com/react/15.4.2/react.min.js"></script>
     <script src="https://cdn.bootcss.com/react/15.4.2/react-dom.min.js"></script>
     <script src="https://cdn.bootcss.com/babel-standalone/6.22.1/babel.min.js"></script>
