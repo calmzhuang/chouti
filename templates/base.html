@@ -48,7 +48,7 @@
                         <div class="header box-active" style="border-radius:5px 0 0 0;">登录</div>
                         <div class="body-login" style="border-radius:0 0 0 5px;">
                             <div class="tab-box">
-                                <span class="tab-mobilelogin active" style="margin-right:10px;">手机号登录</span>|<span class="tab-idlogin" style="margin-left:10px;">用户名登录</span>
+                                <span class="tab-mobilelogin active" style="margin-right:10px;">手机号登录</span>
                             </div>
                             <div class="box-mobilelogin">
                                 <div class="err-msg"></div>
@@ -76,13 +76,8 @@
                                 <form class="form-mobilelogin" action="#" autocomplete="on">
                                     <div class="pr"><input type="text" name="mobile" id="mobile" placeholder="手机号" class="mobile" tabindex="1"></div>
                                     <div class="pr"><input type="password" name="mbpwd" id="mbpwd" placeholder="密码" class="mbpwd" tabindex="2"></div>
-                                </form>
-                            </div>
-                            <div class="box-idlogin" style="display:none;">
-                                <div class="err-msg"></div>
-                                <form class="form-idlogin" action="#" autocomplete="on">
-                                    <div class="pr"><input type="text" name="userid" id="userid" placeholder="用户名" class="userid" tabindex="1"></div>
-                                    <div class="pr"><input type="password" name="pwd" id="pwd" placeholder="密码" class="pwd" tabindex="2"></div>
+                                    <div class="pr"><input type="text" name="pcd" id="pcd" placeholder="验证码" class="getpilcode" style="width: 90px" tabindex="3"><img id="picode"
+                                            src="/check_code" alt="图片验证码" class="imgcode"></div>
                                 </form>
                             </div>
                             <div class="box-btn">

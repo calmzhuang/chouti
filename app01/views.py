@@ -3,6 +3,8 @@ from django.shortcuts import render, HttpResponse, redirect
 from app01.models import TelCode, UserInfo
 from app01.toolClass.getcode import generate_verification_code
 from django.utils.timezone import now, timedelta
+from io import BytesIO
+from app01.toolClass.getpilcode import create_validate_code
 # import datetime, time
 
 # Create your views here.
@@ -12,7 +14,7 @@ def test(request):
     else:
         return HttpResponse('ok!')
 
-def getcode(request):
+def getcode(request):#获取手机号验证码
     if request.method == 'POST':
         telnum = request.POST.get('telephonenum')
         code = generate_verification_code()
@@ -44,7 +46,7 @@ def getcode(request):
                 print(code)
             return HttpResponse('')
 
-def next_page(request):
+def next_page(request):#在进入注册页面的下一页前，对第一页进行校验
     if request.method == 'POST':
         data =request.POST
         very = TelCode.objects.filter(telephone=data.get('rgmobile'), code=data.get('rgcode'))
@@ -53,7 +55,7 @@ def next_page(request):
         else:
             return HttpResponse('false')
 
-def accomplish(request):
+def accomplish(request):#注册完成并登陆
     if request.method == 'POST':
         data = request.POST
         UserInfo.objects.create(
@@ -67,17 +69,21 @@ def accomplish(request):
         request.session.set_expiry(0)
         return HttpResponse('""')
 
-def logout(request):
+def logout(request):#登出系统
     request.session.clear()
     return redirect('/test/')
 
-def login(request):
+def login(request):#登录系统
     if request.method == 'POST':
         username = request.POST.get('username')
         pwd = request.POST.get('pwd')
         keeplogin = request.POST.get('keeplogin')
+        pilcode = request.POST.get('pilcode')
+        verpilcode = request.session.get('CheckCode')
         user = UserInfo.objects.filter((Q(telephone=username)|Q(username=username))&Q(pwd=pwd)).first()
-        if not user:
+        if pilcode.upper() != verpilcode.upper():
+            return HttpResponse('验证码不正确')
+        elif not user:
             return HttpResponse('手机号或密码不正确')
         else:
             request.session['username'] = user.username
@@ -87,3 +93,10 @@ def login(request):
             else:
                 request.session.set_expiry(0)
             return HttpResponse('')
+
+def check_code(request):#生成图片验证码
+    stream = BytesIO()  # 开辟一块内存空间，不用写在外存，减少读写操作
+    img, code = create_validate_code()
+    img.save(stream, 'PNG')
+    request.session['CheckCode'] = code
+    return HttpResponse(stream.getvalue())

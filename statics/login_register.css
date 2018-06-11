@@ -303,3 +303,10 @@ textarea {
     background: #a3a3a1 !important;
 }
 
+.imgcode {
+    cursor: pointer;
+    margin-bottom: -9px;
+    margin-left: 16px;
+    /*image*/
+}
+
