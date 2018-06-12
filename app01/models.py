@@ -26,12 +26,32 @@ class TelCode(models.Model):
     cTime = models.DateTimeField(auto_now_add=True)
 
 class AllHot(models.Model):
+    label_type_choices = [
+        (1, '42区'),
+        (2, '段子'),
+        (3, '图片'),
+        (4, '挨踢1024'),
+        (5, '你问我答'),
+    ]
     title = models.CharField('热点标题', max_length=32)
     url = models.CharField('热点路径', max_length=32)
     source = models.CharField('热点来源', max_length=32)
     content = models.CharField('热点简介', max_length=32)
     img_url = models.CharField('热点图片地址', max_length=32)
-    praise = models.IntegerField('热点获赞数量', default=0)
+    praises = models.IntegerField('热点获赞数量', default=0)
     comments = models.IntegerField('热点评论数量', default=0)
-    label = models.CharField('热点标签', max_length=32)
+    label = models.IntegerField('热点标签', choices=label_type_choices)
     storage_time = models.DateTimeField('热点入库时间', auto_now_add=True)
+    user = models.ForeignKey('发布用户', to='UserInfo', to_field='id', related_name='u')
+    praise_user = models.ManyToManyField('关联点赞账号', to='UserInfo')
+
+
+class Comment(models.Model):
+    news = models.ForeignKey(to='AllHot', to_field='id')
+    user = models.ForeignKey(to='UserInfo', to_field='id')
+    content = models.CharField(max_length=128)
+    device = models.CharField(max_length=16, null=True)
+    ctime = models.DateTimeField(auto_now_add=True)
+    parent_comment = models.ForeignKey(to='self', to_field='id', null=True, related_name='pc')
+
+
