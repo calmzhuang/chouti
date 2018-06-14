@@ -4,7 +4,94 @@
 {% endblock %}
 
 {% block main %}
+    <div class="main-content-band">
     <div class="main-content">
-
+        <div class="content-L">
+            <div class="nav-top-area" style="margin-bottom: 0px;">
+				<div class="child-nav">
+					<a href="/all/hot/recent/1" hidefocus="false" class="hotbtn active icons" id="hotts-nav-btn">最热</a>
+					<a href="/all/discovery/sh/1" hidefocus="false" class="newbtn" id="newest-nav-btn">发现</a>
+					<a href="/all/man/1?sortType=time" hidefocus="false" class="personbtn" id="person-nav-btn">人类发布</a>
+				</div>
+				<div class="sort-nav">
+					<a href="/all/hot/recent/1" hidefocus="false" class="active hotbtn" id="sort-nav-btn">即时排序</a>
+					<a href="/all/hot/24hr/1" hidefocus="false" class="newbtn" id="sort24-nav-btn">24小时</a>
+					<a href="/all/hot/72hr/1" hidefocus="false" class="newbtn" id="sort3-nav-btn">3天</a>
+				</div>
+				<a href="javascript:;" class="publish-btn" id="publishBtn" lang="all">
+					<span class="ico n1"></span><span class="n2">发布</span>
+				</a>
+			</div>
+            <div class="content-list" id="content-list">
+                {% for item in datalist %}
+                    <div class="item">
+                    <div class="timeIntoPool">1528957800015000,1528957863815000</div>
+                    <div class="news-pic"><img lang="20238336" original="//img3.chouti.com/CHOUTI_20180614/D8057C9CBE0E4E568394E041DB1F6413_W384H384=C120x120.jpg?quality=80" src="{{ item.img_url }}" alt="抽屉新热榜" style="display: inline; cursor: -webkit-zoom-out;"></div>
+							<div class="null-item"></div>
+							<div class="news-content" id="newsContent20238336">
+								<div class="part1">
+										<a href="{{ item.url }}" class="show-content color-chag" target="_blank" onmousedown="linksClickStat(20238336);">
+													{{ item.title }}
+										</a>
+										<span class="content-source">-{{ item.source }}</span>
+									<!-- 段子和谣言类别不显示类别名称 -->
+										<a href="/r/news/hot/1" class="n2"><span class="content-kind">42区</span></a>
+									<!-- 来源手机客户端 -->
+									<!-- 显示话题标签 -->
+								</div>
+								<!-- 显示摘要 -->
+									<div class="area-summary">
+										<span class="summary">{{ item.content }}</span>
+									</div>
+								<div class="part2" share-pic="http://img3.chouti.com/CHOUTI_20180614/D8057C9CBE0E4E568394E041DB1F6413_W384H384.jpg" share-title="“那么严肃干嘛”：英国喜剧小说奖颁不出来是因为文学越来越无趣了吗？" share-summary="英国唯一一个旨在奖励喜剧小说创作的文学奖项“伍德豪斯奖”的评委表示，自奖项创办18年以来，今年是喜剧写作最不景气的一年。那么严肃干嘛？本文作者、《观察家》杂志文学编辑SamLeith将带我们一起探索小说中的有趣一面。" share-linkid="20238336" share-subject="42区">
+										<a href="javascript:;" class="digg-a" title="推荐"><span class="hand-icon icon-digg"></span><b>{{ item.praises }}</b><i style="display:none">20238336</i></a>
+									    <a href="javascript:;" class="discus-a" id="discus-a-20238336" timetopool="1分钟前" lang="20238336" title=""><span class="hand-icon icon-discus"></span><b>{{ item.comments }}</b></a>
+										<a href="javascript:;" class="collect-a" id="collect-a-20238336" lang="20238336" title="加入私藏" destjid="cdu_52895779584" jid="chouti150512"><span class="hand-icon icon-collect"></span><b>私藏</b></a>
+                                        <a href="/user/chouti150512/submitted/1" class="user-a"><span><img src="/statics/images/wKgCPVVR2TrqPjtOAAAZZ-UF7pU255=32x32.jpg?quality=80"></span><b>界面新闻</b></a>
+										<a href="/user/chouti150512/submitted/1" class="user-a"><b>{{ item.lable }}</b></a>
+									<span class="left time-into"><a class="time-a" href="/link/20238336" target="_blank"><b>1小时7分钟前</b></a><i>入热榜</i></span>
+									<!-- 分享各微博的按钮 -->
+								<span class="share-site-to" style="visibility: visible; display: none;"><i>分享到</i><span class="share-icon"><a class="icon-sina" id="icon-sina" title="分享到新浪微博" href="javascript:;" hidefocus="true"></a><a class="icon-douban" id="icon-douban" title="分享到豆瓣" href="javascript:;" hidefocus="true"></a><a class="icon-qqzone" id="icon-qqzone" title="分享到QQ空间" href="javascript:;" hidefocus="true"></a><a class="icon-renren" id="icon-renren" title="分享到人人网" href="javascript:;" hidefocus="true"></a><a class="share-none"> </a></span></span></div>
+								<!-- 评论区域 -->
+								<div class="comment-box-area" id="comment-box-area-20238336">
+								<div class="pinglun arrow" id="comt-arrow-20238336"></div>
+								<a class="pinglun close-comt" title="关闭" href="javascript:;" lang="20238336"></a>
+								<div class="corner comment-box" id="comment-box-20238336">
+									<div class="loading-ico loading-ico-top" id="loading-comment-top-20238336" style="margin-left:230px;">加载中，请稍候...</div>
+									<div class="comment-box-top" id="comment-box-top-20238336">
+										<div class="tip-1">最热评论(<span id="newestCount-20238336">3</span>)</div>
+										<div class="tip-2"><a href="/link/20238336" target="_blank"><em class="pinglun em1"></em><span>去评论页面</span></a></div>
+									</div>
+									<!-- 评论树形 -->
+									<ul class="filetree comment-list-top-2" id="comment-list-top-20238336"></ul>
+									<!-- 谣言类别显示相信还是置疑选项 -->
+									<!-- 判断该新闻评论是否关闭 -->
+									<!-- 评论输入框和回复框 -->
+									<div class="huifu-top-box" id="huifu-top-box-20238336">
+										<div class="box-l txt-input-area-div-top corner no-corner-bottom">
+                                            <div id="lab-comment-top-20238336" class="lab-comment-top">回复  <span id="nick--20238336"></span>:</div>
+											<!-- 针对谣言文本输入框无效 -->
+												<textarea lang="20238336" maxlength="150" name="txt-huifu-top" id="txt-huifu-top-20238336" class="txt-huifu txt-huifu-top"></textarea>
+										</div>
+										<div class="box-r">
+											<a id="pub-btn-top-20238336" lang="20238336" href="javascript:;" class="pub-icons add-pub-btn add-pub-btn-unvalid">评论</a>
+											<a id="pub-loading-top-20238336" href="javascript:;" class="loading-ico loading-ico-top pub-loading-top">发布中...</a>
+										</div>
+									</div>
+									<div class="tip-3" id="hidden-comt-20238336">
+										<a href="javascript:;" class="hiddenCom-Btn" lang="20238336"><em class="pinglun em2"></em><span>收起</span></a>
+									</div>
+									<div class="write-error-box-top">
+										<div class="write-error-desc" id="write-error-desc-20238336"></div>
+									</div>
+								</div>
+							<input type="hidden" id="hidsubjectid-20238336" value="1">
+						</div>
+					</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
     </div>
 {% endblock %}

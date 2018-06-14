@@ -7,6 +7,7 @@ from app01.toolClass.getcode import generate_verification_code
 from django.utils.timezone import now, timedelta
 from io import BytesIO
 from app01.toolClass.getpilcode import create_validate_code
+from app01.toolClass.modeltool import ModelSelect
 # import datetime, time
 
 def outer(func):
@@ -15,7 +16,7 @@ def outer(func):
         if sess:
             return func(request, *args, **kwargs)
         else:
-            return redirect('/login')
+            return redirect('/test')
     return inner
 
 # Create your views here.
@@ -112,11 +113,12 @@ def check_code(request):#生成图片验证码
     request.session['CheckCode'] = code
     return HttpResponse(stream.getvalue())
 
-@method_decorator(outer, name='dispatch')
+# @method_decorator(outer, name='dispatch')
 class AllHot(views.View):
     def dispatch(self, request, *args, **kwargs):
         ret = super(AllHot, self).dispatch(request, *args, **kwargs)
         return ret
 
     def get(self, request, *args, **kwargs):
-        return render(request, 'index.html')
+        datalist = list(ModelSelect.hot_select(1))
+        return render(request, 'index.html', {'datalist': datalist})
