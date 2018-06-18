@@ -8,6 +8,7 @@ from django.utils.timezone import now, timedelta
 from io import BytesIO
 from app01.toolClass.getpilcode import create_validate_code
 from app01.toolClass.modeltool import ModelSelect
+import os, json
 # import datetime, time
 
 def outer(func):
@@ -122,3 +123,20 @@ class AllHot(views.View):
     def get(self, request, *args, **kwargs):
         datalist = list(ModelSelect.hot_select(1))
         return render(request, 'index.html', {'datalist': datalist})
+
+def upload(request):
+    if request.method == 'POST':
+        ret = {'status': False, 'data': None, 'error': None}
+        try:
+            img = request.FILES.get('file')
+            with open(os.path.join('statics/data', img.name), 'wb') as f:
+                for chunk in img.chunks(chunk_size=1024):
+                    f.write(chunk)
+                ret['status'] = True
+                ret['data'] = os.path.join('statics/data', img.name)
+            f.close()
+        except Exception as e:
+            ret['error'] = e
+        finally:
+            # print(json.dumps(ret))
+            return HttpResponse('')

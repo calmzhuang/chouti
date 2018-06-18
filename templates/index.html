@@ -94,4 +94,162 @@
         </div>
     </div>
     </div>
+    <div class="dialog corner" id="digg-dialog-publish" style="left: 463px; display: none; top: 130px;">
+        <div class="dialog-titlebar">
+            <div class="dialog-title">
+                <span id="shareTitle">分享新发现</span>
+                <input type="hidden" id="hidHtTag" value="" topicid="">
+            </div>
+            <div class="dialog-titlebar-close"><a href="javascript:;" title="关闭" class="icons dialog-btn-close" id="dialog-btn-close"></a></div>
+        </div>
+        <div class="dialog-content corner-bottom">
+            <div class="tab-tags nobrder W" id="tabs">
+                <a href="javascript:;" class="tb H" id="pubTabZixun">链接</a>
+                <a href="javascript:;" class="tb H" id="pubTabDuanzi">文字</a>
+                <a href="javascript:;" class="tb H w-active color" id="pubTabPic">图片</a>
+                <div class="tags"></div>
+            </div>
+            <div class="dialog-main-content" id="dialog-main-content">
+                <!-- 资讯区域 -->
+                <div class="publish-content-zixun" id="publish-content-zixun" style="display: none;">
+                    <div class="tab-alt">添加链接</div>
+                    <div class="p1">
+                        <div class="txt-input-area float-left corner" style="width:426px;" id="txt-zixun-area">
+                            <input type="text" name="txt-zixun" id="txt-zixun" class="small-txt-input" style="background-color: rgb(255, 255, 255); color: rgb(51, 51, 51); width: 420px; border: 1px solid rgb(204, 220, 239);">
+                            <label id="lab-zixun" for="txt-zixun" style="display: block;">http://</label>
+                            <input id="url" name="url" type="hidden" value="">
+                        </div>
+                        <div class="button-container" id="zixun-button-container">
+                            <a class="pub-icons pub-btn pub-btn-unvalid" href="javascript:;" id="add-pub-btn0">获取标题</a>
+                            <a class="loading martop10" href="javascript:;" id="add-pub-loading0" style="display: none;"></a>
+                        </div>
+                    </div>
+                    <div id="zixun-big-area">
+                        <div class="tab-alt martop8">标题</div>
+                        <div class="small-txt-input-area corner" id="zixun-http-area">
+                            <input name="txt-zixun-content" id="txt-zixun-content" maxlength="150" class="small-txt-input w496" disabled="disabled" style="background-color: rgb(236, 233, 216);">
+                        </div>
+                        <div class="tab-alt martop8">添加摘要（选填）</div>
+                        <div class="txt-input-area corner" style="padding:6px;">
+                            <textarea id="txt-zhaiyao" name="txt-zhaiyao" maxlength="120" disabled="disabled" style="background-color: rgb(236, 233, 216);"></textarea>
+                        </div>
+                        <div class="toclass-btn-area">
+                            <span class="tospan toclass-btn-unvalid">发布到:</span>
+                                <a class="pub-icons toclass-btn toclass-btn-valid" href="javascript:;" id="to-btn-zixun" lang="1">42区</a>
+                                <a class="pub-icons toclass-btn toclass-btn-unvalid" href="javascript:;" id="to-btn-duanzi" lang="2">段子</a>
+                                <!--
+                                <a class="pub-icons toclass-btn toclass-btn-unvalid" href="javascript:;" id="to-btn-yaoyan" lang="3">谣言</a>
+                                -->
+                                <a class="pub-icons toclass-btn toclass-btn-unvalid" href="javascript:;" id="to-btn-pic" lang="4">图片</a>
+                                <a class="pub-icons toclass-btn un1024 toclass-btn-unfavor-unvalid" href="javascript:;" id="to-btn-tec" lang="100">挨踢1024</a>
+                                <!--
+                                <a class="pub-icons toclass-btn unfavor toclass-btn-unfavor-unvalid" href="javascript:;" id="to-btn-unfavor"
+                                lang="5">公众场合不宜</a>
+                                -->
+                                <a class="pub-icons toclass-btn toclass-btn-unvalid" href="javascript:;" id="to-btn-ask" lang="151">你问我答</a>
+                        </div>
+                        <div class="dialog-buttonpane white bottom-null" id="dialog-buttonpane0">
+                            <div class="write-error-box" id="write-error-box0">
+                                <div class="write-error-desc"></div>
+                            </div>
+                            <div class="button-container">
+                                <a class="pub-clear-btn" href="javascript:;" id="clear-btn-link">清空</a>
+                                <a class="pub-icons new-pub-btn new-pub-btn-unvalid" href="javascript:;" id="pub-btn0">发&nbsp;布</a>
+                                <a class="loading" href="javascript:;" id="pub-loading0">发布中...</a>
+                            </div>
+                            <div class="write-error" style="display: none;">标题已超出<span id="moreLength0">10</span>个字</div>
+                        </div>
+                    </div>
+                    <div style="height:30px;clear:both;overflow:hidden">
+                    </div>
+                </div>
+                <!-- 段子区域 -->
+                <div class="publish-content-duanzi" id="publish-content-duanzi" style="display: none;">
+                    <div class="txt-input-area corner no-corner-bottom">
+                        <textarea name="txt-duanzi" id="txt-duanzi" style="background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 220, 239);"></textarea>
+                        <label id="lab-duanzi" for="txt-duanzi" style="display: block;">发布段子...</label>
+                    </div>
+                    <div class="dialog-buttonpane corner-bottom" id="dialog-buttonpane1">
+                        <div class="write-length">还可以输入<span id="showLength1">150</span>字</div>
+                        <div class="write-error" style="display: none;">标题已超出<span id="moreLength1">10</span>个字</div>
+                    </div>
+                    <div class="toclass-btn-area">
+                        <span class="tospan toclass-btn-unvalid">发布到:</span>
+                            <a class="pub-icons toclass-btn toclass-btn-valid" href="javascript:;" id="to-btn-duanzi2" lang="2">段子</a>
+                            <a class="pub-icons toclass-btn toclass-btn-unvalid" href="javascript:;" id="to-btn-ask2" lang="151">你问我答</a>
+                            <!--
+                            <a class="pub-icons toclass-btn toclass-btn-unvalid" href="javascript:;" id="to-btn-yaoyan2" lang="3">谣言</a>
+                            -->
+                    </div>
+                    <div class="dialog-buttonpane white bottom-null" id="dialog-buttonpane1">
+                        <div class="write-error-box" id="write-error-box1">
+                            <div class="write-error-desc" style="display: none;"></div>
+                        </div>
+                        <div class="button-container">
+                            <a class="pub-clear-btn" href="javascript:;" id="clear-btn-wanzi">清空</a>
+                            <a class="pub-icons new-pub-btn new-pub-btn-unvalid" href="javascript:;" id="pub-btn1">发&nbsp;布</a>
+                            <a class="loading" href="javascript:;" id="pub-loading1">发布中...</a>
+                        </div>
+                    </div>
+                    <div style="height:30px;clear:both;overflow:hidden">
+                    </div>
+                </div>
+                <!-- 图片区域 -->
+                <div class="publish-content-pic" id="publish-content-pic" style="display: block;">
+                    <div class="tab-alt" id="img-alt-title">添加图片</div>
+                    <div class="txt-input-area corner" id="upload-img-area">
+                        <form enctype="multipart/form-data" method="post" target="uploadIframe" action="/link/pic/upload" id="uploadPicFrm">
+                            <a class="pub-icons line-block add-pub-btn add-pub-btn-valid" href="javascript:;" id="add-pub-btn2" style="display: inline-block;">上传<input type="file" name="imgUrl" id="imgUrl" size="1" hidefocus="true"></a>
+                            <span class="imgRule">支持jpg、jpeg、gif、png格式，且不超过5MB</span>
+                            <a class="loading" href="javascript:;" id="add-pub-loading2" style="display: none;">上传中...</a>
+                            <input type="hidden" id="timeHidden" name="identifie" value="1529288690311">
+                        </form>
+                    </div>
+{#                    <iframe id="uploadIframe" name="uploadIframe" scrolling="no" height="0px" frameborder="0" style="display:none" src="/blank.html"></iframe>#}
+                    <div class="txt-input-area corner" id="show-img-area" style="display: none;">
+                        <img id="upload-img" src="" origin="">
+                        <a href="javascript:;" class="repeat-upload" id="repeat-upload-btn">重新上传</a>
+                    </div>
+                    <div class="txt-input-area martop10 corner no-corner-bottom">
+                        <textarea name="txt-img" id="txt-img" style="background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 220, 239);"></textarea>
+                        <label id="lab-img" for="txt-img" style="display: block;">请输入图片描述...</label>
+                    </div>
+                    <div class="dialog-buttonpane corner-bottom" id="dialog-buttonpane2">
+                        <!--
+                        <div class="pic-yellow"><input type="checkbox" name="boxYellow" id="boxYellow" /><label
+                        for="boxYellow">这张图片很黄很暴力</label></div>
+                        -->
+                        <div class="write-length">还可以输入<span id="showLength2">150</span>字</div>
+                        <div class="write-error" style="display: none;">标题已超出<span id="moreLength2">10</span>个字</div>
+                    </div>
+                    <div class="toclass-btn-area">
+                        <span class="tospan toclass-btn-unvalid">发布到:</span>
+                            <a class="pub-icons toclass-btn toclass-btn-valid" href="javascript:;" id="to-btn-pic2" lang="4">图片</a>
+                            <!--
+                            <a class="pub-icons toclass-btn unfavor toclass-btn-unfavor-unvalid" href="javascript:;"
+                            id="to-btn-unfavor2" lang="5">公众场合不宜</a>
+                            -->
+                            <a class="pub-icons toclass-btn toclass-btn-unvalid" href="javascript:;" id="to-btn-ask3" lang="151">你问我答</a>
+                    </div>
+                    <div class="dialog-buttonpane white bottom-null" id="dialog-buttonpane2">
+                        <div class="write-error-box" id="write-error-box2">
+                            <div class="write-error-desc"></div>
+                        </div>
+                        <div class="button-container">
+                            <a class="pub-clear-btn" href="javascript:;" id="clear-btn-pic">清空</a>
+                            <a class="pub-icons new-pub-btn new-pub-btn-unvalid" href="javascript:;" id="pub-btn2">发&nbsp;布</a>
+                            <a class="loading" href="javascript:;" id="pub-loading2">发布中...</a>
+                        </div>
+                    </div>
+                    <div style="height:30px;clear:both;overflow:hidden">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="op mask" id="mask" style="width: 100%; height: 110%; display: none;"></div>
+{% endblock %}
+
+{% block js %}
+    <script src="/statics/js/all_hot_content.js"></script>
 {% endblock %}

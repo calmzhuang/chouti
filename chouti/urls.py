@@ -27,4 +27,5 @@ urlpatterns = [
     path('login/', views.login),
     path('check_code/', views.check_code, name='check_code'),
     path('allhot/', views.AllHot.as_view()),
+    path('link/pic/upload/', views.upload),
 ]
