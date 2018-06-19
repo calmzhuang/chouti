@@ -104,14 +104,14 @@
         </div>
         <div class="dialog-content corner-bottom">
             <div class="tab-tags nobrder W" id="tabs">
-                <a href="javascript:;" class="tb H" id="pubTabZixun">链接</a>
+                <a href="javascript:;" class="tb H w-active color" id="pubTabZixun">链接</a>
                 <a href="javascript:;" class="tb H" id="pubTabDuanzi">文字</a>
-                <a href="javascript:;" class="tb H w-active color" id="pubTabPic">图片</a>
+                <a href="javascript:;" class="tb H" id="pubTabPic">图片</a>
                 <div class="tags"></div>
             </div>
             <div class="dialog-main-content" id="dialog-main-content">
                 <!-- 资讯区域 -->
-                <div class="publish-content-zixun" id="publish-content-zixun" style="display: none;">
+                <div class="publish-content-zixun" id="publish-content-zixun" style="display: block;">
                     <div class="tab-alt">添加链接</div>
                     <div class="p1">
                         <div class="txt-input-area float-left corner" style="width:426px;" id="txt-zixun-area">
@@ -141,7 +141,7 @@
                                 <a class="pub-icons toclass-btn toclass-btn-unvalid" href="javascript:;" id="to-btn-yaoyan" lang="3">谣言</a>
                                 -->
                                 <a class="pub-icons toclass-btn toclass-btn-unvalid" href="javascript:;" id="to-btn-pic" lang="4">图片</a>
-                                <a class="pub-icons toclass-btn un1024 toclass-btn-unfavor-unvalid" href="javascript:;" id="to-btn-tec" lang="100">挨踢1024</a>
+                                <a class="pub-icons toclass-btn un1024 toclass-btn-unvalid" href="javascript:;" id="to-btn-tec" lang="100">挨踢1024</a>
                                 <!--
                                 <a class="pub-icons toclass-btn unfavor toclass-btn-unfavor-unvalid" href="javascript:;" id="to-btn-unfavor"
                                 lang="5">公众场合不宜</a>
@@ -195,7 +195,7 @@
                     </div>
                 </div>
                 <!-- 图片区域 -->
-                <div class="publish-content-pic" id="publish-content-pic" style="display: block;">
+                <div class="publish-content-pic" id="publish-content-pic" style="display: none;">
                     <div class="tab-alt" id="img-alt-title">添加图片</div>
                     <div class="txt-input-area corner" id="upload-img-area">
                         <form enctype="multipart/form-data" method="post" target="uploadIframe" action="/link/pic/upload" id="uploadPicFrm">
