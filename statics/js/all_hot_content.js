@@ -37,12 +37,20 @@ $(function () {
        ShareType(sharetype, _that);
    });
 
-   //
+   //切换发布对象
    $('.toclass-btn').on('click', function () {
        let _that = $(this);
        PubIcon(_that);
    })
 
+   $('.digg-a').on('click', function () {
+       if (username == '') {
+           login_register();
+       }
+       else {
+
+       }
+   })
 });
 
 publish_page_show = () => {
