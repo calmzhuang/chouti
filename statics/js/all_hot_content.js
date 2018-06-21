@@ -41,14 +41,16 @@ $(function () {
    $('.toclass-btn').on('click', function () {
        let _that = $(this);
        PubIcon(_that);
-   })
-
+   });
+   
+   //点赞功能 
    $('.digg-a').on('click', function () {
        if (username == '') {
            login_register();
        }
        else {
-
+           let _that = $(this);
+           praise_user(_that);
        }
    })
 });
@@ -120,3 +122,26 @@ function PubIcon(_that) {
     _that.addClass('toclass-btn-valid').removeClass('toclass-btn-unvalid');
     _that.siblings().addClass('toclass-btn-unvalid').removeClass('toclass-btn-valid');
 };
+
+function praise_user(_that) {
+    let hotId = _that.children("i").text();
+    let user = username;
+    $.ajax({
+        url:'/link/pic/praise/',
+        type:'POST',
+        data: {
+            "hotId": hotId,
+            "username": user,
+        },
+        success: function(data) {
+            if (data == 'add') {
+                _that.children('span').addClass("vote-actived");
+                _that.children('b').text(parseInt(_that.children('b').text())+1);
+            }
+            else if (data == 'delete') {
+                _that.children('span').removeClass("vote-actived");
+                _that.children('b').text(parseInt(_that.children('b').text())-1);
+            }
+        }
+    })
+}

@@ -44,19 +44,16 @@ def getcode(request):#获取手机号验证码
                 if tel.times >= 6:
                     if tctime.exists():
                         TelCode.objects.filter(telephone=telnum).update(times=0, code=code)
-                        print(code)
                     else:
                         return HttpResponse('注册次数超过最大限制，请明天再试')
                 else:
                     TelCode.objects.filter(telephone=telnum).update(times=F('times') + 1, code=code)
-                    print(code)
             else:
                 TelCode.objects.create(
                     telephone=telnum,
                     code=code,
                     times=0,
                 )
-                print(code)
             return HttpResponse('')
 
 def next_page(request):#在进入注册页面的下一页前，对第一页进行校验
@@ -121,6 +118,12 @@ class AllHot(views.View):
         return ret
 
     def get(self, request, *args, **kwargs):
+        if request.session['username']:
+            user = UserInfo.objects.filter((Q(telephone=request.session['username']) | Q(username=request.session['username']))).first()
+            allhot_id = []
+            for item in ModelSelect.user_praise(user):
+                allhot_id.append(item.get('id'))
+            request.session['allhot_id'] = allhot_id
         datalist = list(ModelSelect.hot_select(1))
         return render(request, 'index.html', {'datalist': datalist})
 
@@ -138,5 +141,16 @@ def upload(request):
         except Exception as e:
             ret['error'] = e
         finally:
-            # print(json.dumps(ret))
             return HttpResponse('')
+
+def praise(request):
+    if request.method == 'POST':
+        hotId = request.POST.get("hotId")
+        username = request.POST.get("username")
+        have_praise = ModelSelect.praise(hotId, username)
+        if have_praise.exists():
+            ModelSelect.praise_delete(hotId, username)
+            return HttpResponse('delete')
+        else:
+            ModelSelect.praise_add(hotId, username)
+            return HttpResponse('add')

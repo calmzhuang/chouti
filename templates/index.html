@@ -9,7 +9,7 @@
         <div class="content-L">
             <div class="nav-top-area" style="margin-bottom: 0px;">
 				<div class="child-nav">
-					<a href="/all/hot/recent/1" hidefocus="false" class="hotbtn active icons" id="hotts-nav-btn">最热</a>
+					<a href="/allhot/" hidefocus="false" class="hotbtn active icons" id="hotts-nav-btn">最热</a>
 					<a href="/all/discovery/sh/1" hidefocus="false" class="newbtn" id="newest-nav-btn">发现</a>
 					<a href="/all/man/1?sortType=time" hidefocus="false" class="personbtn" id="person-nav-btn">人类发布</a>
 				</div>
@@ -44,7 +44,7 @@
 										<span class="summary">{{ item.content }}</span>
 									</div>
 								<div class="part2" share-pic="http://img3.chouti.com/CHOUTI_20180614/D8057C9CBE0E4E568394E041DB1F6413_W384H384.jpg" share-title="“那么严肃干嘛”：英国喜剧小说奖颁不出来是因为文学越来越无趣了吗？" share-summary="英国唯一一个旨在奖励喜剧小说创作的文学奖项“伍德豪斯奖”的评委表示，自奖项创办18年以来，今年是喜剧写作最不景气的一年。那么严肃干嘛？本文作者、《观察家》杂志文学编辑SamLeith将带我们一起探索小说中的有趣一面。" share-linkid="20238336" share-subject="42区">
-										<a href="javascript:;" class="digg-a" title="推荐"><span class="hand-icon icon-digg"></span><b>{{ item.praises }}</b><i style="display:none">20238336</i></a>
+										<a href="javascript:;" class="digg-a" title="推荐">{% if item.id in request.session.allhot_id %}<span class="hand-icon icon-digg vote-actived"></span>{% else %}<span class="hand-icon icon-digg"></span>{% endif %}<b>{{ item.praises }}</b><i style="display:none">{{ item.id }}</i></a>
 									    <a href="javascript:;" class="discus-a" id="discus-a-20238336" timetopool="1分钟前" lang="20238336" title=""><span class="hand-icon icon-discus"></span><b>{{ item.comments }}</b></a>
 										<a href="javascript:;" class="collect-a" id="collect-a-20238336" lang="20238336" title="加入私藏" destjid="cdu_52895779584" jid="chouti150512"><span class="hand-icon icon-collect"></span><b>私藏</b></a>
                                         <a href="/user/chouti150512/submitted/1" class="user-a"><span><img src="/statics/images/wKgCPVVR2TrqPjtOAAAZZ-UF7pU255=32x32.jpg?quality=80"></span><b>界面新闻</b></a>

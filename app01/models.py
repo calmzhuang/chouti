@@ -43,7 +43,7 @@ class AllHot(models.Model):
     label = models.IntegerField('热点标签', choices=label_type_choices)
     storage_time = models.DateTimeField('热点入库时间', auto_now_add=True)
     user = models.ForeignKey(to='UserInfo', on_delete=models.CASCADE, to_field='id', related_name='u')
-    praise_user = models.ManyToManyField(to='UserInfo')
+    praise_user = models.ManyToManyField(to='UserInfo', related_name='user_praise')
 
 
 class Comment(models.Model):
